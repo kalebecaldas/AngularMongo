@@ -9,6 +9,8 @@ var BookSchema = new mongoose.Schema({
     published_year: String,
     publisher: String,
     updated_date: { type: Date, default: Date.now },
+    foto: Buffer,
   });
 
   module.exports = mongoose.model('Book', BookSchema);
+

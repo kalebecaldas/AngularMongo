@@ -4,28 +4,33 @@
     <div class="col-md-6">
       <form (ngSubmit)="saveBook()" #bookForm="ngForm">
         <div class="form-group">
-          <label for="name">ISBN</label>
+          <label for="name">Nome</label>
           <input type="text" class="form-control" [(ngModel)]="book.isbn" name="isbn" required>
         </div>
         <div class="form-group">
-          <label for="name">Title</label>
-          <input type="text" class="form-control" [(ngModel)]="book.title" name="title" required>
+          <label for="name">CPF</label>
+          <input type="number" class="form-control" [(ngModel)]="book.title" name="title" required>
         </div>
         <div class="form-group">
-          <label for="name">Author</label>
-          <input type="text" class="form-control" [(ngModel)]="book.author" name="author" required>
+          <label for="name">RG</label>
+          <input type="number" class="form-control" [(ngModel)]="book.author" name="author" required>
         </div>
         <div class="form-group">
-          <label for="name">Published Year</label>
-          <input type="number" class="form-control" [(ngModel)]="book.published_year" name="published_year" required>
+          <label for="name">Endereço</label>
+          <input type="text" class="form-control" [(ngModel)]="book.published_year" name="published_year" required>
         </div>
         <div class="form-group">
-          <label for="name">Publisher</label>
+          <label for="name">Nome da Mãe</label>
           <input type="text" class="form-control" [(ngModel)]="book.publisher" name="publisher" required>
         </div>
-        
+
+        <div>
+        <label for="exampleFormControlFile1">Selecionar Arquivo</label>
+    <input type="file" class="form-control-file" [(ngModel)]="book.foto"  name="seletordeArquivos">
+  </div>
+
         <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!bookForm.form.valid">Save</button>
+          <button type="submit" class="btn btn-success" [disabled]="!bookForm.form.valid">Salvar</button>
         </div>
       </form>
     </div>

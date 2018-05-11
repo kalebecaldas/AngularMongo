@@ -7,15 +7,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Author</th>
+        <th>FOTOGRAFIA</th>
+        <th>CPF</th>
+        <th>NOME</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let book of books">
+          <td>
+              <img border="0" [src]="book.foto"  width="100" height="80"></td>
+        
         <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
+        <td>{{ book.isbn }}</td>
+       
         <td>
           <a [routerLink]="['/book-edit', book._id]" class="btn btn-success">Show Detail</a>
         </td>
