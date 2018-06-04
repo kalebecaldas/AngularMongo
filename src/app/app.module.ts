@@ -11,6 +11,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
+import { NavmenuComponent } from './navmenu/navmenu.component';
+
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   {
@@ -45,13 +54,20 @@ const appRoutes: Routes = [
     BookComponent,
     BookDetailComponent,
     BookCreateComponent,
-    BookEditComponent
+    BookEditComponent,
+    NavmenuComponent,
+
+    
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule,  
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    TypeaheadModule.forRoot(),
     
     RouterModule.forRoot(
       appRoutes,
