@@ -68,12 +68,15 @@ const appRoutes: Routes = [
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
+    NgbModule.forRoot(),
     
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule],
+
   providers: [],
   bootstrap: [AppComponent]
 })
