@@ -19,7 +19,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 const appRoutes: Routes = [
   {
