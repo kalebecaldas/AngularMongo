@@ -1,5 +1,11 @@
 <div class="container">
-  <h1>Pessoa List
+    <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
+    <input [(ngModel)]="selected"
+           [typeahead]="states"
+           class="form-control">
+   
+
+           <h1>Pessoa List
     <a [routerLink]="['/book-create']" class="btn btn-default btn-lg">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
