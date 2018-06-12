@@ -1,9 +1,8 @@
+
 <div class="container">
-    <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
-    <input [(ngModel)]="selected"
-           [typeahead]="states"
-           class="form-control">
-   
+  
+    <input type="text" pInputText />
+    <input type="text" [(ngModel)]="item">
 
            <h1>Pessoa List
     <a [routerLink]="['/book-create']" class="btn btn-default btn-lg">
@@ -23,14 +22,20 @@
       <tr *ngFor="let book of books">
           <td>
               <img border="0" [src]="book.foto"  width="100" height="80"></td>
-        
+  
         <td>{{ book.title }}</td>
         <td>{{ book.isbn }}</td>
        
+         <td></td>
+
         <td>
-          <a [routerLink]="['/book-edit', book._id]" class="btn btn-success">Show Detail</a>
+          <a [routerLink]="['/book-edit', book._id]" class="btn btn-success">Detalhes</a>
         </td>
       </tr>
+      <tr *ngFor="let book of books | callback: item">
+       <td>{{item}} {{ book.title }} </td>
+      </tr>
+    
     </tbody>
 
    

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,16 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { ReactiveFormsModule } from '@angular/forms'
+
+import {AccordionModule} from 'primeng/accordion';     
+import {MenuItem} from 'primeng/api';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import { CampformatadoComponent } from './campformatado/campformatado.component';
+import { CallbackPipe } from './book/filtro';
 
 
 
@@ -56,13 +67,19 @@ const appRoutes: Routes = [
     BookCreateComponent,
     BookEditComponent,
     NavmenuComponent,
+    CallbackPipe,
+    
+    
+    
 
     
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,  
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
@@ -75,7 +92,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, BookComponent,AutoCompleteModule],
 
   providers: [],
   bootstrap: [AppComponent]
