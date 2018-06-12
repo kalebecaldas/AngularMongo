@@ -5,14 +5,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 @Pipe({
     name: 'callback',
     pure: false
-})
-
-@Component({
-    selector: 'app-book',
-    templateUrl: './book.component.html',
-    styleUrls: ['./book.component.css']
-  })
-  
+})  
 
 export class CallbackPipe implements PipeTransform {
     books:any
