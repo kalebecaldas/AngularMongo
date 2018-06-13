@@ -28,7 +28,7 @@ import {AccordionModule} from 'primeng/accordion';
 import {MenuItem} from 'primeng/api';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { CampformatadoComponent } from './campformatado/campformatado.component';
-import { CallbackPipe } from './book/filtro';
+import { FilterPipe } from './book/filter.pipe';
 
 
 
@@ -67,13 +67,7 @@ const appRoutes: Routes = [
     BookCreateComponent,
     BookEditComponent,
     NavmenuComponent,
-    CallbackPipe,
-    
-    
-    
-
-    
-
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

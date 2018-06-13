@@ -1,7 +1,7 @@
 
 <div class="container">
   
-    <input type="text" [(ngModel)]="item">
+    <input type="text" [(ngModel)]="item" placeholder="Pesquisar por nome">
 
            <h1>Pessoa List
     <a [routerLink]="['/book-create']" class="btn btn-default btn-lg">
@@ -21,8 +21,8 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody *ngFor="let book of searchResults; index as i">
-        <tr *ngIf="i<2">
+      <tbody *ngFor="let book of books | filter: item; index as i">
+        <tr *ngIf="i<10">
           <td><img border="0" [src]="book.foto"  width="100" height="80"></td>
           <td>{{ book.title }}</td>
           <td>{{ book.isbn }}</td>

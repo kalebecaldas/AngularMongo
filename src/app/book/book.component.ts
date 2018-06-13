@@ -1,6 +1,5 @@
 import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CallbackPipe } from './filtro';
 import { OnChanges } from '@angular/core'
 
 
@@ -10,30 +9,15 @@ import { OnChanges } from '@angular/core'
   styleUrls: ['./book.component.css']
 })
 
-export class BookComponent implements OnInit, OnChanges {
+export class BookComponent implements OnInit {
   books: any;
-  @Input() item: String;
-  searchResults: any;
-  search: boolean;
+  item: string;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get('/book').subscribe(data => {
       this.books = data;
-      this.searchResults = this.books;
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    
-    if (this.item == '') {
-      this.search = false;
-    } else {
-      this.search = true;
-    }
-
-    console.log(this.item);
-    console.log(this.search);
   }
 }
