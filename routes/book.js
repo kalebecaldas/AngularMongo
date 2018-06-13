@@ -50,4 +50,23 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+/**
+ * Testar validação cpf
+ */
+router.get('/bycpf/:cpf', (req, res, next) => {
+  Book.findOne({title: req.params.cpf}, (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    if (result) {
+      res.send(true);
+    }
+    else {
+      res.send(false);
+    }
+
+  })
+})
+
 module.exports = router;
