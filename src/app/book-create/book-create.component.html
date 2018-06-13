@@ -9,11 +9,11 @@
         </div>
         <div class="form-group">
           <label for="name">CPF</label>
-          <input type="number" class="form-control" [(ngModel)]="book.title" name="title" required>
+          <input class="form-control" mask="000.000.000-00" [(ngModel)]="book.title" name="title" required>
         </div>
         <div class="form-group">
           <label for="name">RG</label>
-          <input type="number" class="form-control" [(ngModel)]="book.author" name="author" required>
+          <input class="form-control" mask="0.000.000-0" [(ngModel)]="book.author" name="author" required>
         </div>
         <div class="form-group">
           <label for="name">Endereço</label>
@@ -28,8 +28,6 @@
           <label for="exampleFormControlInput1">Email address</label>
           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
         </div>
-
-
         
         <div class="form-group">
           <label for="exampleFormControlSelect1">Example select</label>
@@ -58,7 +56,7 @@
 
 
 
-
+<br><br>
         <div>
         <label for="exampleFormControlFile1">Selecionar Arquivo</label>
     <input type="file" class="form-control-file" [(ngModel)]="book.foto"  name="seletordeArquivos">
@@ -68,7 +66,7 @@
 
         <div class="form-group">
             <button class="btn"  [routerLink]="['/books']" type="button">VOLTAR</button>
-          <button type="submit" class="btn btn-success" [disabled]="!bookForm.form.valid">Salvar</button>
+          <button type="submit" class="btn btn-success">Salvar</button>
         </div>
       </form>
     </div>

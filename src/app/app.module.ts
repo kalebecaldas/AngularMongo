@@ -30,7 +30,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { CampformatadoComponent } from './campformatado/campformatado.component';
 import { FilterPipe } from './book/filter.pipe';
 
-
+import {NgxMaskModule} from 'ngx-mask'
 
 const appRoutes: Routes = [
   {
@@ -80,6 +80,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     NgbModule.forRoot(),
+    NgxMaskModule.forRoot(),
     
     RouterModule.forRoot(
       appRoutes,
