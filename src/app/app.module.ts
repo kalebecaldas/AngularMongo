@@ -24,19 +24,18 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ReactiveFormsModule } from '@angular/forms'
 
-import {AccordionModule} from 'primeng/accordion';     
-import {MenuItem} from 'primeng/api';
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { CampformatadoComponent } from './campformatado/campformatado.component';
 import { FilterPipe } from './book/filter.pipe';
 
 import {NgxMaskModule} from 'ngx-mask';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
+import { AuthService } from './auth.service';
 
 
 const appRoutes: Routes = [
   {
     path: 'books',
+    canActivate: [AuthService],
     component: BookComponent,
     data: { title: 'Book List' }
   },
@@ -66,7 +65,7 @@ const appRoutes: Routes = [
     data: { title: 'Login' }
   },
   { path: '',
-    redirectTo: '/login-valid',
+    redirectTo: '/pagina-inicial',
     pathMatch: 'full'
   }
 ];
@@ -102,7 +101,9 @@ const appRoutes: Routes = [
   ],
   exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, BookComponent,AutoCompleteModule],
 
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,8 +10,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend3">@</span>
               </div>
-              <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
-              <div class="invalid-feedback">
+              <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required (focusout)="debug()" #inputUsuario>
+              <div class="invalid-feedback" *ngIf="inputLogin.invalid">
                 Usuário Inválido.
               </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupPrepend3">#</span>
                 </div>
-                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Password" aria-describedby="inputGroupPrepend3" required>
+                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Password" aria-describedby="inputGroupPrepend3" required #inputSenha>
                 <div class="invalid-feedback">
                   Senha Inválida.
                 </div>

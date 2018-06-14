@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 
 var PessoaSchema = new mongoose.Schema({
+    login: String,
+    senha: String,
     Nome: String,
     CPF: String,
     RG: String,
