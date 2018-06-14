@@ -2,6 +2,12 @@ import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OnChanges } from '@angular/core'
 
+import fontawesome from '@fortawesome/fontawesome';
+import faUser from '@fortawesome/fontawesome-free-solid';
+import faAccessibleIcon from '@fortawesome/fontawesome-free-brands'; 
+
+fontawesome.library.add(faUser);
+fontawesome.library.add(faAccessibleIcon);
 
 @Component({
   selector: 'app-book',
