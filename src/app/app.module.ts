@@ -65,7 +65,7 @@ const appRoutes: Routes = [
     data: { title: 'Login' }
   },
   { path: '',
-    redirectTo: '/pagina-inicial',
+    redirectTo: '/books',
     pathMatch: 'full'
   }
 ];
