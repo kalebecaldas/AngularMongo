@@ -30,7 +30,9 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { CampformatadoComponent } from './campformatado/campformatado.component';
 import { FilterPipe } from './book/filter.pipe';
 
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
+import { TelaLoginComponent } from './tela-login/tela-login.component';
+
 
 const appRoutes: Routes = [
   {
@@ -53,8 +55,18 @@ const appRoutes: Routes = [
     component: BookEditComponent,
     data: { title: 'Edit Book' }
   },
+  {
+    path: 'pagina-inicial',
+    component: NavmenuComponent,
+    data: { title: 'Pagina Inicial' }
+  },
+  {
+    path: 'login-valid',
+    component: TelaLoginComponent,
+    data: { title: 'Login' }
+  },
   { path: '',
-    redirectTo: '/books',
+    redirectTo: '/login-valid',
     pathMatch: 'full'
   }
 ];
@@ -68,13 +80,14 @@ const appRoutes: Routes = [
     BookEditComponent,
     NavmenuComponent,
     FilterPipe,
+    TelaLoginComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,  
+    HttpClientModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),

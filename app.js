@@ -37,7 +37,7 @@ module.exports = app;
 /*-- Conexão com Mongo Atlas*/
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-//mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
-mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
+//mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
