@@ -4,43 +4,43 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-book-edit',
-  templateUrl: './book-edit.component.html',
-  styleUrls: ['./book-edit.component.css'],
+  selector: 'app-pessoa-edit',
+  templateUrl: './pessoa-edit.component.html',
+  styleUrls: ['./pessoa-edit.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BookEditComponent implements OnInit {
+export class PessoaEditComponent implements OnInit {
 
-  book = { };
+  pessoa = { };
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getBook(this.route.snapshot.params['id']);
+    this.getPessoa(this.route.snapshot.params['id']);
   }
 
-  getBook(id) {
-    this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+  getPessoa(id) {
+    this.http.get('/pessoa/'+id).subscribe(data => {
+      this.pessoa = data;
     });
   }
 
 
-  updateBook(id) {
-    this.http.put('/book/'+id, this.book)
+  updatePessoa(id) {
+    this.http.put('/pessoa/'+id, this.pessoa)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/book-edit', id]);
+          this.router.navigate(['/pessoa-edit', id]);
         }, (err) => {
           console.log(err);
         }
       );
   }
 
-  deleteBook(id) {
-    this.http.delete('/book/'+id)
+  deletePessoa(id) {
+    this.http.delete('/pessoa/'+id)
       .subscribe(res => {
-          this.router.navigate(['/book-edit']);
+          this.router.navigate(['/pessoa-edit']);
         }, (err) => {
           console.log(err);
         }

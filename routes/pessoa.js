@@ -1,60 +1,57 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var Book = require('../models/Book.js');
+var Pessoa = require('../models/Pessoa.js');
 
-/* GET ALL BOOKS */
+/* GET ALL PERSONS */
 router.get('/', function(req, res, next) {
-  Book.find(function (err, products) {
+  Pessoa.find(function (err, products) {
     if (err) return next(err);
     res.json(products);
   });
 });
 
-/* GET SINGLE BOOK BY ID */
+/* GET SINGLE PERSON BY ID */
 router.get('/:id', function(req, res, next) {
-  Book.findById(req.params.id, function (err, post) {
+  Pessoa.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
 router.get('/:id', function(req, res, next) {
-  Book.findById(req.params.id, function (err, post) {
+  Pessoa.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* SAVE BOOK */
+/* SAVE PERSON */
 router.post('/', function(req, res, next) {
-  Book.create(req.body, function (err, post) {
+  Pessoa.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* UPDATE BOOK */
+/* UPDATE PERSON */
 router.put('/:id', function(req, res, next) {
-  Book.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Pessoa.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* DELETE BOOK */
+/* DELETE PERSON */
 router.delete('/:id', function(req, res, next) {
-  Book.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  Pessoa.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/**
- * Testar validação cpf
- */
-router.get('/bycpf/:cpf', (req, res, next) => {
-  Book.findOne({title: req.params.cpf}, (err, result) => {
+/** VERIFY DUPLICITY */
+router.get('/cpf/:cpf', (req, res, next) => {
+  Pessoa.findOne({cpf: req.params.cpf}, (err, result) => {
     if (err) {
       console.error(err);
     }

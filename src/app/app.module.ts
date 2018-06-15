@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
 
-import { RouterModule, Routes } from '@angular/router';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookCreateComponent } from './book-create/book-create.component';
-import { BookEditComponent } from './book-edit/book-edit.component';
+import { PessoaComponent } from './pessoa/pessoa.component';
+import { PessoaDetailComponent } from './pessoa/pessoa-detail/pessoa-detail.component';
+import { PessoaCreateComponent } from './pessoa/pessoa-create/pessoa-create.component';
+import { PessoaEditComponent } from './pessoa/pessoa-edit/pessoa-edit.component';
+
 import { NavmenuComponent } from './navmenu/navmenu.component';
-
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -25,34 +25,37 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms'
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { FilterPipe } from './book/filter.pipe';
+import { FilterPipe } from './pessoa/filter.pipe';
 
 import {NgxMaskModule} from 'ngx-mask';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
+
+/* Services */
 import { AuthService } from './auth.service';
+import { PessoaService } from './pessoa/pessoa.service';
 
 
 const appRoutes: Routes = [
   {
-    path: 'books',
-    canActivate: [AuthService],
-    component: BookComponent,
-    data: { title: 'Book List' }
+    path: 'pessoas',
+    //canActivate: [AuthService],
+    component: PessoaComponent,
+    data: { title: 'Pessoa List' }
   },
   {
-    path: 'book-details/:id',
-    component: BookDetailComponent,
-    data: { title: 'Book Details' }
+    path: 'pessoa-details/:id',
+    component: PessoaDetailComponent,
+    data: { title: 'Pessoa Details' }
   },
   {
-    path: 'book-create',
-    component: BookCreateComponent,
-    data: { title: 'Create Book' }
+    path: 'pessoa-create',
+    component: PessoaCreateComponent,
+    data: { title: 'Create Pessoa' }
   },
   {
-    path: 'book-edit/:id',
-    component: BookEditComponent,
-    data: { title: 'Edit Book' }
+    path: 'pessoa-edit/:id',
+    component: PessoaEditComponent,
+    data: { title: 'Edit Pessoa' }
   },
   {
     path: 'pagina-inicial',
@@ -65,7 +68,7 @@ const appRoutes: Routes = [
     data: { title: 'Login' }
   },
   { path: '',
-    redirectTo: '/books',
+    redirectTo: '/pessoas',
     pathMatch: 'full'
   }
 ];
@@ -73,10 +76,10 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
-    BookDetailComponent,
-    BookCreateComponent,
-    BookEditComponent,
+    PessoaComponent,
+    PessoaDetailComponent,
+    PessoaCreateComponent,
+    PessoaEditComponent,
     NavmenuComponent,
     FilterPipe,
     TelaLoginComponent,
@@ -99,10 +102,11 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, BookComponent,AutoCompleteModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, PessoaComponent,AutoCompleteModule],
 
   providers: [
-    AuthService
+    AuthService,
+    PessoaService
   ],
   bootstrap: [AppComponent]
 })

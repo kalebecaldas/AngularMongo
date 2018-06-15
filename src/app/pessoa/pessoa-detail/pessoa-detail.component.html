@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>{{ pessoa.nome }}</h1>
+  <dl class="list">
+    <dt>Nome</dt>
+    <dd>{{ pessoa.nome }}</dd>
+    <dt>CPF</dt>
+    <dd>{{ pessoa.cpf }}</dd>
+    <dt>RG</dt>
+    <dd>{{ pessoa.rg }}</dd>
+    <dt>Endereço</dt>
+    <dd>{{ pessoa.endereco }}</dd>
+    <dt>Nome da Mãe</dt>
+    <dd>{{ pessoa.mae }}</dd>
+  </dl>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <a [routerLink]="['/pessoa-edit', pessoa._id]" class="btn btn-success">EDIT</a>
+    <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">DELETE</button>
+  </div>
+</div>

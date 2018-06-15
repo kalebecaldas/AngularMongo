@@ -1,18 +1,18 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var book = require('./routes/book');
+var pessoa = require('./routes/pessoa');
 var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/books', express.static(path.join(__dirname, 'dist')));
-app.use('/book', book);
+app.use('/pessoas', express.static(path.join(__dirname, 'dist')));
+app.use('/pessoa', pessoa);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,7 +37,7 @@ module.exports = app;
 /*-- Conexão com Mongo Atlas*/
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-//mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
-mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
-  .then(() =>  console.log('connection succesful'))
+mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
+//mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('Connection succesful'))
   .catch((err) => console.error(err));

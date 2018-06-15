@@ -10,20 +10,22 @@ fontawesome.library.add(faUser);
 fontawesome.library.add(faAccessibleIcon);
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: 'app-pessoa',
+  templateUrl: './pessoa.component.html',
+  styleUrls: ['./pessoa.component.css']
 })
 
-export class BookComponent implements OnInit {
-  books: any;
+export class PessoaComponent implements OnInit {
+  pessoas: any;
   item: string;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('/book').subscribe(data => {
-      this.books = data;
+    this.http.get('/pessoa').subscribe(data => {
+      this.pessoas = data;
+    }, err => {
+      console.error(err);
     });
   }
 }

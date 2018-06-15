@@ -1,32 +1,32 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { when } from 'q';
+//import { Observable } from 'rxjs';
+//import { when } from 'q';
 
 @Component({
-  selector: 'app-book-create',
-  templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.css'],
+  selector: 'app-pessoa-create',
+  templateUrl: './pessoa-create.component.html',
+  styleUrls: ['./pessoa-create.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BookCreateComponent implements OnInit {
+export class PessoaCreateComponent implements OnInit {
   //@ViewChild('inputCpf') cpf;
   cpfDuplicado = false;
   cpfValido = true;
 
-  book = {};
+  pessoa = {};
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
 
-  saveBook() {
-    this.http.post('/book', this.book)
+  savePessoa() {
+    this.http.post('/pessoa', this.pessoa)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          this.router.navigate(['/pessoa-details', id]);
         }, (err) => {
           console.log(err);
         }
@@ -36,10 +36,10 @@ export class BookCreateComponent implements OnInit {
   validarCpf() {
     this.cpfValido = false;
 
-    if (this.book['title']) {
-      if(this.book['title'].length === 11) {      
+    if (this.pessoa['cpf']) {
+      if(this.pessoa['cpf'].length === 11) {      
         let numeroCpf = [];
-        this.book['title'].split('').forEach(element => {
+        this.pessoa['cpf'].split('').forEach(element => {
           numeroCpf.push(+element);
         });
 
@@ -47,7 +47,7 @@ export class BookCreateComponent implements OnInit {
       }
     }
 
-    this.http.get(`/book/bycpf/${this.book['title']}`).subscribe(
+    this.http.get(`/pessoa/cpf/${this.pessoa['cpf']}`).subscribe(
       (data) => {
         if (data) {
           this.cpfDuplicado = true;

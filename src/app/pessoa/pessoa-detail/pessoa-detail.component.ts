@@ -3,32 +3,32 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css'],
+  selector: 'app-Pessoa-detail',
+  templateUrl: './Pessoa-detail.component.html',
+  styleUrls: ['./Pessoa-detail.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BookDetailComponent implements OnInit {
+export class PessoaDetailComponent implements OnInit {
 
-  book = {};
+  Pessoa = {};
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.getBookDetail(this.route.snapshot.params['id']);
+    this.getPessoaDetail(this.route.snapshot.params['id']);
   }
 
-  getBookDetail(id) {
-    this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+  getPessoaDetail(id) {
+    this.http.get('/Pessoa/'+id).subscribe(data => {
+      this.Pessoa = data;
     });
   }
 
   
-  deleteBook(id) {
-    this.http.delete('/book/'+id)
+  deletePessoa(id) {
+    this.http.delete('/Pessoa/'+id)
       .subscribe(res => {
-          this.router.navigate(['/books-details']);
+          this.router.navigate(['/Pessoas-details']);
         }, (err) => {
           console.log(err);
         }
