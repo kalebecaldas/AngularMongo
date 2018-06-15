@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PessoaEditComponent implements OnInit {
 
-  pessoa = { };
+  pessoa = {};
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
@@ -30,7 +30,7 @@ export class PessoaEditComponent implements OnInit {
     this.http.put('/pessoa/'+id, this.pessoa)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/pessoa-edit', id]);
+          this.router.navigate(['']);
         }, (err) => {
           console.log(err);
         }
@@ -40,7 +40,7 @@ export class PessoaEditComponent implements OnInit {
   deletePessoa(id) {
     this.http.delete('/pessoa/'+id)
       .subscribe(res => {
-          this.router.navigate(['/pessoa-edit']);
+          this.router.navigate(['']);
         }, (err) => {
           console.log(err);
         }

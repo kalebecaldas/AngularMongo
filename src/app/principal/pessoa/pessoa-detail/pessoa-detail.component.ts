@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PessoaDetailComponent implements OnInit {
 
-  Pessoa = {};
+  pessoa = {};
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
@@ -19,16 +19,16 @@ export class PessoaDetailComponent implements OnInit {
   }
 
   getPessoaDetail(id) {
-    this.http.get('/Pessoa/'+id).subscribe(data => {
-      this.Pessoa = data;
+    this.http.get('/pessoa/'+id).subscribe(data => {
+      this.pessoa = data;
     });
   }
 
   
   deletePessoa(id) {
-    this.http.delete('/Pessoa/'+id)
+    this.http.delete('/pessoa/'+id)
       .subscribe(res => {
-          this.router.navigate(['/Pessoas-details']);
+          this.router.navigate(['']);
         }, (err) => {
           console.log(err);
         }

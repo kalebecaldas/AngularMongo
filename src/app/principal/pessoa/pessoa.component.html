@@ -4,7 +4,7 @@
     <input type="text" [(ngModel)]="item" placeholder="Pesquisar por nome">
 
            <h1>Pessoa List
-    <a [routerLink]="['/pessoa-create']" > 
+    <a [routerLink]="['create']" > 
       <button type="button" class="btn btn-light"> <i class="fas fa-user-plus"></i> Cadastrar</button>
     </a>
   </h1>
@@ -27,7 +27,7 @@
           <td>{{ pessoa.cpf }}</td>
           <td>{{ pessoa.nome }}</td>
           <td>
-            <a [routerLink]="['/pessoa-edit', pessoa._id]" class="btn btn-success">Detalhes</a>
+            <a [routerLink]="['details', pessoa._id]" class="btn btn-success">Detalhes</a>
           </td>
         </tr>
       </tbody>

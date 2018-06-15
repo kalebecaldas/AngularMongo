@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Pessoa = require('../models/Pessoa.js');
 
-/* GET ALL PERSONS */
+/* GET ALL PessoaS */
 router.get('/', function(req, res, next) {
   Pessoa.find(function (err, products) {
     if (err) return next(err);
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET SINGLE PERSON BY ID */
+/* GET SINGLE Pessoa BY ID */
 router.get('/:id', function(req, res, next) {
   Pessoa.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -25,7 +25,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* SAVE PERSON */
+/* SAVE Pessoa */
 router.post('/', function(req, res, next) {
   Pessoa.create(req.body, function (err, post) {
     if (err) return next(err);
@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
   });
 });
 
-/* UPDATE PERSON */
+/* UPDATE Pessoa */
 router.put('/:id', function(req, res, next) {
   Pessoa.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -41,7 +41,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE PERSON */
+/* DELETE Pessoa */
 router.delete('/:id', function(req, res, next) {
   Pessoa.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -49,9 +49,11 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-/** VERIFY DUPLICITY */
-router.get('/cpf/:cpf', (req, res, next) => {
-  Pessoa.findOne({cpf: req.params.cpf}, (err, result) => {
+/**
+ * Testar validação cpf
+ */
+router.get('/bycpf/:cpf', (req, res, next) => {
+  Pessoa.findOne({title: req.params.cpf}, (err, result) => {
     if (err) {
       console.error(err);
     }

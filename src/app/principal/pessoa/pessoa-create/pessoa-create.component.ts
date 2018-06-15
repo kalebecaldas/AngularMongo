@@ -26,7 +26,7 @@ export class PessoaCreateComponent implements OnInit {
     this.http.post('/pessoa', this.pessoa)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/pessoa-details', id]);
+          this.router.navigate(['']);
         }, (err) => {
           console.log(err);
         }

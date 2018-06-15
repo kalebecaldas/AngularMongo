@@ -16,7 +16,8 @@
 
 <div class="row">
   <div class="col-md-12">
-    <a [routerLink]="['/pessoa-edit', pessoa._id]" class="btn btn-success">EDIT</a>
-    <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">DELETE</button>
+    <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+    <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
+    <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
   </div>
 </div>

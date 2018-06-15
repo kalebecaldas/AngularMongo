@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-tela-login',
-  templateUrl: './tela-login.component.html',
-  styleUrls: ['./tela-login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class TelaLoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
   @ViewChild('inputUsuario') inputUsuario;
   @ViewChild('inputSenha') inputSenha;
 
@@ -16,7 +16,7 @@ export class TelaLoginComponent implements OnInit {
   }
 
   fazerLogin() {
-    this.authService.login(this.inputUsuario.nativeElement.value, this.inputSenha.nativeElement.value);
+    //this.authService.login(this.inputUsuario.nativeElement.value, this.inputSenha.nativeElement.value);
   }
 
 }
