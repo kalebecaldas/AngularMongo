@@ -5,7 +5,10 @@ var Pessoa = require('../models/Pessoa.js');
 /* GET ALL PessoaS */
 router.get('/', function(req, res, next) {
   Pessoa.find(function (err, products) {
-    if (err) return next(err);
+    if (err)
+      return next(err);
+    
+    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(products);
   });
 });
@@ -14,13 +17,8 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   Pessoa.findById(req.params.id, function (err, post) {
     if (err) return next(err);
-    res.json(post);
-  });
-});
 
-router.get('/:id', function(req, res, next) {
-  Pessoa.findById(req.params.id, function (err, post) {
-    if (err) return next(err);
+    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -29,14 +27,16 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   Pessoa.create(req.body, function (err, post) {
     if (err) return next(err);
+    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
 
 /* UPDATE Pessoa */
-router.put('/:id', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
   Pessoa.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
+    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -45,6 +45,7 @@ router.put('/:id', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   Pessoa.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
+    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -52,11 +53,13 @@ router.delete('/:id', function(req, res, next) {
 /**
  * Testar validação cpf
  */
-router.get('/bycpf/:cpf', (req, res, next) => {
+router.get('/cpf/:cpf', (req, res, next) => {
   Pessoa.findOne({title: req.params.cpf}, (err, result) => {
     if (err) {
       console.error(err);
     }
+
+    //res.setHeader('Access-Control-Allow-Origin', '*');
 
     if (result) {
       res.send(true);

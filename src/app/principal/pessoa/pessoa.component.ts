@@ -1,10 +1,11 @@
-import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { OnChanges } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
+
 
 import fontawesome from '@fortawesome/fontawesome';
 import faUser from '@fortawesome/fontawesome-free-solid';
 import faAccessibleIcon from '@fortawesome/fontawesome-free-brands'; 
+import { ConfigService } from '../../config.service';
+import { HttpClient } from '@angular/common/http';
 
 fontawesome.library.add(faUser);
 fontawesome.library.add(faAccessibleIcon);
@@ -18,11 +19,14 @@ fontawesome.library.add(faAccessibleIcon);
 export class PessoaComponent implements OnInit {
   pessoas: any;
   item: string;
+  url: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private config: ConfigService) { }
 
   ngOnInit() {
-    this.http.get('/pessoa').subscribe(data => {
+    this.url = this.config.getConfig();
+
+    this.http.get(`${this.url}/pessoa`).subscribe(data => {
       this.pessoas = data;
     }, err => {
       console.error(err);

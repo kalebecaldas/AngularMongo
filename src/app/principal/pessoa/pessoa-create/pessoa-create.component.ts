@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../../../config.service';
 //import { Observable } from 'rxjs';
 //import { when } from 'q';
 
@@ -14,18 +15,19 @@ export class PessoaCreateComponent implements OnInit {
   //@ViewChild('inputCpf') cpf;
   cpfDuplicado = false;
   cpfValido = true;
+  url: string;
 
   pessoa = {};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
 
   ngOnInit() {
+    this.url = this.config.getConfig();
   }
 
   savePessoa() {
-    this.http.post('/pessoa', this.pessoa)
+    this.http.post(`${this.url}/pessoa`, this.pessoa)
       .subscribe(res => {
-          let id = res['_id'];
           this.router.navigate(['']);
         }, (err) => {
           console.log(err);
@@ -47,7 +49,7 @@ export class PessoaCreateComponent implements OnInit {
       }
     }
 
-    this.http.get(`/pessoa/cpf/${this.pessoa['cpf']}`).subscribe(
+    this.http.get(`${this.url}/pessoa/cpf/${this.pessoa['cpf']}`).subscribe(
       (data) => {
         if (data) {
           this.cpfDuplicado = true;

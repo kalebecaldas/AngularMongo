@@ -24,16 +24,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms'
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { FilterPipe } from './principal/pessoa/filter.pipe';
+import { FiltroPipe } from './principal/pessoa/filtro.pipe';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginComponent } from './login/login.component';
 
 /* Services */
 import { AuthService } from './auth.service';
-import { PessoaService } from './principal/pessoa/pessoa.service';
 import { BarraComponent } from './principal/barra/barra.component';
 import { RoutesModule } from './routes/routes.module';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { RoutesModule } from './routes/routes.module';
     PessoaCreateComponent,
     PessoaEditComponent,
     PrincipalComponent,
-    FilterPipe,
+    FiltroPipe,
     LoginComponent,
     BarraComponent
   ],
@@ -65,7 +65,7 @@ import { RoutesModule } from './routes/routes.module';
 
   providers: [
     AuthService,
-    PessoaService
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

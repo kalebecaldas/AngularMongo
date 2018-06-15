@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../../../config.service';
 
 @Component({
   selector: 'app-pessoa-edit',
@@ -9,23 +10,24 @@ import { HttpClient } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None
 })
 export class PessoaEditComponent implements OnInit {
-
+  url: string;
   pessoa = {};
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.url = this.config.getConfig();
     this.getPessoa(this.route.snapshot.params['id']);
   }
 
   getPessoa(id) {
-    this.http.get('/pessoa/'+id).subscribe(data => {
+    this.http.get(`${this.url}/pessoa/${id}`).subscribe(data => {
       this.pessoa = data;
     });
   }
 
   updatePessoa(id) {
-    this.http.put('/pessoa/'+id, this.pessoa)
+    this.http.post(`${this.url}/pessoa/${id}`, this.pessoa)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['']);
@@ -36,7 +38,7 @@ export class PessoaEditComponent implements OnInit {
   }
 
   deletePessoa(id) {
-    this.http.delete('/pessoa/'+id)
+    this.http.delete(`${this.url}/pessoa/${id}`)
       .subscribe(res => {
           this.router.navigate(['']);
         }, (err) => {
