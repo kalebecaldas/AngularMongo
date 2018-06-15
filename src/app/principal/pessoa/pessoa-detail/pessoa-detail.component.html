@@ -1,23 +1,17 @@
 <div class="container">
-  <h1>{{ pessoa.nome }}</h1>
-  <dl class="list">
-    <dt>Nome</dt>
-    <dd>{{ pessoa.nome }}</dd>
-    <dt>CPF</dt>
-    <dd>{{ pessoa.cpf }}</dd>
-    <dt>RG</dt>
-    <dd>{{ pessoa.rg }}</dd>
-    <dt>Endereço</dt>
-    <dd>{{ pessoa.endereco }}</dd>
-    <dt>Nome da Mãe</dt>
-    <dd>{{ pessoa.mae }}</dd>
-  </dl>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
-    <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
-    <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
-  </div>
+  <form>
+      <div class="form-control">
+        <p class="lead">{{ pessoa.nome }}</p>
+        <hr class="my-4">
+        <p><b>CPF:</b> {{ pessoa.cpf }}</p>
+        <p><b>RG:</b> {{ pessoa.rg }}</p>
+        <p><b>Endereço:</b> {{ pessoa.endereco }}</p>
+        <p><b>Nome da mãe:</b> {{ pessoa.mae }}</p>
+        <form class="inline-form">
+          <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+          <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
+          <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
+        </form>
+      </div>
+    </form>
 </div>

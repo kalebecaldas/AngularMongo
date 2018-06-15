@@ -29,14 +29,14 @@
           <label for="name">Nome da Mãe</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
         </div>
-        <br><br>
-        <div>
-          <label for="exampleFormControlFile1">Selecionar Arquivo</label>
-          <input type="file" class="form-control-file" [(ngModel)]="pessoa.foto"  name="seletordeArquivos">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="seletordeArquivos"  [(ngModel)]="pessoa.foto" name="seletordeArquivos">
+          <label class="custom-file-label" for="seletordeArquivos">Selecionar Arquivo</label>
         </div>
+        <hr>
         <div class="form-group">
-          <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
-          <button type="submit" class="btn btn-success">Salvar</button>
+          <button class="btn btn-primary" type="button" [routerLink]="['']">Voltar</button>
+          <button class="btn btn-success" type="submit">Salvar</button>
         </div>
       </form>
     </div>

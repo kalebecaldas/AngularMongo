@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-pessoa-edit',
   templateUrl: './pessoa-edit.component.html',
@@ -24,7 +23,6 @@ export class PessoaEditComponent implements OnInit {
       this.pessoa = data;
     });
   }
-
 
   updatePessoa(id) {
     this.http.put('/pessoa/'+id, this.pessoa)

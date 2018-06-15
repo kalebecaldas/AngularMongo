@@ -1,24 +1,23 @@
 
 <div class="container">
-  
-    <input type="text" [(ngModel)]="item" placeholder="Pesquisar por nome">
+  <h2>Lista de pessoas</h2>
 
-           <h1>Pessoa List
-    <a [routerLink]="['create']" > 
-      <button type="button" class="btn btn-light"> <i class="fas fa-user-plus"></i> Cadastrar</button>
-    </a>
-  </h1>
-
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control" placeholder="Pesquisar por nome" [(ngModel)]="item" name="item">
+    </div>
+    <button type="button" class="btn btn-light mb-2" [routerLink]="['create']"> <i class="fas fa-user-plus"></i> Cadastrar</button>
+  </form>
   <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Pessoas</div>
     <table class="table">
       <thead>
         <tr>
-          <th>FOTOGRAFIA</th>
+          <th>Fotografia</th>
           <th>CPF</th>
-          <th>NOME</th>
-          <th>Action</th>
+          <th>Nome</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody *ngFor="let pessoa of pessoas | filter: item; index as i">
