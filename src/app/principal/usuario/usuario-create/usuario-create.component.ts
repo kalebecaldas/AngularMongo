@@ -26,9 +26,9 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   saveUsuario() {
-    this.http.post(`${this.url}/usuarios`, this.usuario)
+    this.http.post(`${this.url}/usuario`, this.usuario)
       .subscribe(res => {
-          this.router.navigate(['']);
+         this.router.navigate(['/principal/usuarios']);
         }, (err) => {
           console.log(err);
         }
@@ -49,7 +49,7 @@ export class UsuarioCreateComponent implements OnInit {
       }
     }
 
-    this.http.get(`${this.url}/usuarios/cpf/${this.usuario['cpf']}`).subscribe(
+    this.http.get(`${this.url}/usuario/cpf/${this.usuario['cpf']}`).subscribe(
       (data) => {
         if (data) {
           this.cpfDuplicado = true;

@@ -42,11 +42,7 @@ const appRoutes: Routes = [
         component: PessoaEditComponent,
         data: { title: 'Editar Pessoa' }
       },
-
-       
-   
-       
-       {
+      {
         path: 'usuarios',
         component: UsuarioComponent,
         data: { title: 'Lista de Usuarios' }

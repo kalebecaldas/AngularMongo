@@ -6,7 +6,7 @@
         <p><b>CPF:</b> {{ usuario.cpf }}</p>
         <p><b>Usuario:</b> {{ usuario.usuario }}</p>
         <form class="inline-form">
-          <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+          <button class="btn"  [routerLink]="['/principal/usuarios']" type="button">Voltar</button>
           <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
           <button class="btn btn-danger" type="button" (click)="deleteUsuario(usuario._id)">Excluir</button>
         </form>

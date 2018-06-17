@@ -38,6 +38,9 @@ import { UsuarioComponent } from './principal/usuario/usuario.component';
 import { UsuarioCreateComponent } from './principal/usuario/usuario-create/usuario-create.component';
 import { UsuarioDetailComponent } from './principal/usuario/usuario-detail/usuario-detail.component';
 import { UsuarioEditComponent } from './principal/usuario/usuario-edit/usuario-edit.component';
+import { CarroCreateComponent } from './principal/carro/carro-create/carro-create.component';
+import { CarroDetailComponent } from './principal/carro/carro-detail/carro-detail.component';
+import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { UsuarioEditComponent } from './principal/usuario/usuario-edit/usuario-e
     UsuarioComponent,
     UsuarioCreateComponent,
     UsuarioDetailComponent,
-    UsuarioEditComponent
+    UsuarioEditComponent,
+    CarroCreateComponent,
+    CarroDetailComponent,
+    CarroEditComponent
   ],
   imports: [
     BrowserModule,

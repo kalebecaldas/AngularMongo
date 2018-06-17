@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var pessoa = require('./routes/pessoa');
+var usuario = require('./routes/usuario')
 var app = express();
 
 app.use(logger('dev'));
@@ -19,6 +20,7 @@ app.use(function(req, res, next) {
 
 /* API */
 app.use('/pessoa', pessoa);
+app.use('/usuario',usuario);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

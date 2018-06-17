@@ -12,20 +12,13 @@
           <input type="text" class="form-control" [(ngModel)]="usuario.cpf" name="cpf" required>
         </div>
         <div class="form-group">
-          <label for="name">RG</label>
-          <input type="text" class="form-control" [(ngModel)]="usuario.rg" name="rg" required>
+          <label for="name">Senha</label>
+          <input type="password" class="form-control" [(ngModel)]="usuario.senha" name="senha" required>
         </div>
-        <div class="form-group">
-          <label for="name">Endereço</label>
-          <input type="text" class="form-control" [(ngModel)]="usuario.endereco" name="endereco" required>
-        </div>
-        <div class="form-group">
-          <label for="name">Nome da Mãe</label>
-          <input type="text" class="form-control" [(ngModel)]="usuario.mae" name="mae" required>
-        </div>
+        
         <hr>
         <div class="form-group">
-          <button class="btn btn-primary" [routerLink]="['']" type="button">Voltar</button>
+          <button class="btn btn-primary" [routerLink]="['/principal/usuarios']" type="button">Voltar</button>
           <button class="btn btn-success" type="button" (click)="updateUsuario(usuario._id)" [disabled]="!usuarioForm.form.valid">Salvar</button>
           <button class="btn btn-danger" type="button" (click)="deleteUsuario(usuario._id)">Excluir</button>
         </div>

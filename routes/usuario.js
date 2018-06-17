@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Usuario = require('../models/Usuario.js');
 
-/* GET ALL Usuarios */
+/* GET ALL UsuarioS */
 router.get('/', function(req, res, next) {
   Usuario.find(function (err, products) {
     if (err)
