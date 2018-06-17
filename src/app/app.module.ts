@@ -4,16 +4,15 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-import { PessoaComponent } from './pessoa/pessoa.component';
-import { PessoaDetailComponent } from './pessoa/pessoa-detail/pessoa-detail.component';
-import { PessoaCreateComponent } from './pessoa/pessoa-create/pessoa-create.component';
-import { PessoaEditComponent } from './pessoa/pessoa-edit/pessoa-edit.component';
+import { PessoaComponent } from './principal/pessoa/pessoa.component';
+import { PessoaDetailComponent } from './principal/pessoa/pessoa-detail/pessoa-detail.component';
+import { PessoaCreateComponent } from './principal/pessoa/pessoa-create/pessoa-create.component';
+import { PessoaEditComponent } from './principal/pessoa/pessoa-edit/pessoa-edit.component';
 
-import { NavmenuComponent } from './navmenu/navmenu.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -25,53 +24,20 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms'
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { FilterPipe } from './pessoa/filter.pipe';
+import { FiltroPipe } from './principal/pessoa/filtro.pipe';
 
-import {NgxMaskModule} from 'ngx-mask';
-import { TelaLoginComponent } from './tela-login/tela-login.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { LoginComponent } from './login/login.component';
 
 /* Services */
 import { AuthService } from './auth.service';
-import { PessoaService } from './pessoa/pessoa.service';
-
-
-const appRoutes: Routes = [
-  {
-    path: 'pessoas',
-    //canActivate: [AuthService],
-    component: PessoaComponent,
-    data: { title: 'Pessoa List' }
-  },
-  {
-    path: 'pessoa-details/:id',
-    component: PessoaDetailComponent,
-    data: { title: 'Pessoa Details' }
-  },
-  {
-    path: 'pessoa-create',
-    component: PessoaCreateComponent,
-    data: { title: 'Create Pessoa' }
-  },
-  {
-    path: 'pessoa-edit/:id',
-    component: PessoaEditComponent,
-    data: { title: 'Edit Pessoa' }
-  },
-  {
-    path: 'pagina-inicial',
-    component: NavmenuComponent,
-    data: { title: 'Pagina Inicial' }
-  },
-  {
-    path: 'login-valid',
-    component: TelaLoginComponent,
-    data: { title: 'Login' }
-  },
-  { path: '',
-    redirectTo: '/pessoas',
-    pathMatch: 'full'
-  }
-];
+import { BarraComponent } from './principal/barra/barra.component';
+import { RoutesModule } from './routes/routes.module';
+import { ConfigService } from './config.service';
+import { UsuarioComponent } from './principal/usuario/usuario.component';
+import { UsuarioCreateComponent } from './principal/usuario/usuario-create/usuario-create.component';
+import { UsuarioDetailComponent } from './principal/usuario/usuario-detail/usuario-detail.component';
+import { UsuarioEditComponent } from './principal/usuario/usuario-edit/usuario-edit.component';
 
 @NgModule({
   declarations: [
@@ -80,9 +46,14 @@ const appRoutes: Routes = [
     PessoaDetailComponent,
     PessoaCreateComponent,
     PessoaEditComponent,
-    NavmenuComponent,
-    FilterPipe,
-    TelaLoginComponent,
+    PrincipalComponent,
+    FiltroPipe,
+    LoginComponent,
+    BarraComponent,
+    UsuarioComponent,
+    UsuarioCreateComponent,
+    UsuarioDetailComponent,
+    UsuarioEditComponent
   ],
   imports: [
     BrowserModule,
@@ -96,17 +67,13 @@ const appRoutes: Routes = [
     TypeaheadModule.forRoot(),
     NgbModule.forRoot(),
     NgxMaskModule.forRoot(),
-    
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+    RoutesModule
   ],
-  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, PessoaComponent,AutoCompleteModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, PessoaComponent,UsuarioComponent,AutoCompleteModule],
 
   providers: [
     AuthService,
-    PessoaService
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

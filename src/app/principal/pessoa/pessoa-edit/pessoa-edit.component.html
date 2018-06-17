@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Editar cadastro</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="updatePessoa(pessoa._id)" #pessoaForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="name">CPF</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.cpf" name="cpf" required>
+        </div>
+        <div class="form-group">
+          <label for="name">RG</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.rg" name="rg" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Endereço</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.endereco" name="endereco" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Nome da Mãe</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
+        </div>
+        <hr>
+        <div class="form-group">
+          <button class="btn btn-primary" [routerLink]="['']" type="button">Voltar</button>
+          <button class="btn btn-success" type="button" (click)="updatePessoa(pessoa._id)" [disabled]="!pessoaForm.form.valid">Salvar</button>
+          <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+<br> <br>
+    <form >
+        <div class="col-md-4 mb-3">
+            <label for="validationServerUsername">Usuário</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+              </div>
+              <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required (focusout)="debug()" #inputUsuario>
+              <div class="invalid-feedback" *ngIf="inputLogin.invalid">
+                Usuário Inválido.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+              <label for="validationServerUsername">Senha</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend3">#</span>
+                </div>
+                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Password" aria-describedby="inputGroupPrepend3" required #inputSenha>
+                <div class="invalid-feedback">
+                  Senha Inválida.
+                </div>
+              </div>
+              <br><br>
+              <button type="submit" class="btn btn-primary" [routerLink]="['/books']">Submit</button>
+              
+            </div>
+       
+      </form>
+      
+  </div>

@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Pessoa = require('../models/Pessoa.js');
+var Usuario = require('../models/Usuario.js');
 
-/* GET ALL PessoaS */
+/* GET ALL Usuarios */
 router.get('/', function(req, res, next) {
-  Pessoa.find(function (err, products) {
+  Usuario.find(function (err, products) {
     if (err)
       return next(err);
     
@@ -13,9 +13,9 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET SINGLE Pessoa BY ID */
+/* GET SINGLE Usuario BY ID */
 router.get('/:id', function(req, res, next) {
-  Pessoa.findById(req.params.id, function (err, post) {
+  Usuario.findById(req.params.id, function (err, post) {
     if (err) return next(err);
 
     //res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,27 +23,27 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* SAVE Pessoa */
+/* SAVE Usuario */
 router.post('/', function(req, res, next) {
-  Pessoa.create(req.body, function (err, post) {
+  Usuario.create(req.body, function (err, post) {
     if (err) return next(err);
     //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
 
-/* UPDATE Pessoa */
+/* UPDATE Usuario */
 router.post('/:id', function(req, res, next) {
-  Pessoa.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Usuario.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
 
-/* DELETE Pessoa */
+/* DELETE Usuario */
 router.delete('/:id', function(req, res, next) {
-  Pessoa.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  Usuario.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
@@ -54,7 +54,7 @@ router.delete('/:id', function(req, res, next) {
  * Testar validação cpf
  */
 router.get('/cpf/:cpf', (req, res, next) => {
-  Pessoa.findOne({cpf: req.params.cpf}, (err, result) => {
+  Usuario.findOne({cpf: req.params.cpf}, (err, result) => {
     if (err) {
       console.error(err);
     }

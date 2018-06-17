@@ -1,0 +1,17 @@
+<div class="container">
+  <form>
+      <div class="form-control">
+        <p class="lead">{{ pessoa.nome }}</p>
+        <hr class="my-4">
+        <p><b>CPF:</b> {{ pessoa.cpf }}</p>
+        <p><b>RG:</b> {{ pessoa.rg }}</p>
+        <p><b>Endereço:</b> {{ pessoa.endereco }}</p>
+        <p><b>Nome da mãe:</b> {{ pessoa.mae }}</p>
+        <form class="inline-form">
+          <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+          <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
+          <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
+        </form>
+      </div>
+    </form>
+</div>

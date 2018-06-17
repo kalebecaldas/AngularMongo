@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Adicionar usuario</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="saveUsuario()" #usuarioForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="name">CPF</label>
+          <input class="form-control" mask="000.000.000-00" [(ngModel)]="usuario.cpf" name="cpf" required (focusout)="validarCpf()">
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="cpfDuplicado">
+          CPF já cadastrado!
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="!cpfValido">
+          CPF inválido!
+        </div>
+        <div class="form-group">
+          <label for="name">Usuario</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.usuario" name="usuario" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Senha</label>
+          <input type="password" class="form-control" [(ngModel)]="usuario.senha" name="senha" required>
+        </div>
+    
+
+      
+     
+        <hr>
+        <div class="form-group">
+          <button class="btn btn-primary" type="button" [routerLink]="['']">Voltar</button>
+          <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

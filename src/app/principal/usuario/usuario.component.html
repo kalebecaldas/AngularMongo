@@ -1,0 +1,40 @@
+
+<div class="container-fluid">
+  <div>
+    <div class="md-6">
+      <h2>Lista de Usuarios</h2>
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="text" class="form-control" placeholder="Pesquisar por nome" [(ngModel)]="item" name="item">
+        </div>
+        <button type="button" class="btn btn-light mb-2" [routerLink]="['create']"> <i class="fas fa-user-plus"></i> Cadastrar</button>
+      </form>
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <!-- <th>Fotografia</th> -->
+              <th>CPF</th>
+              <th>Nome</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let usuario of usuarios | filtro: item; index as i">
+            <tr *ngIf="i<10">
+              <!-- <td>
+                <img border="0" [src]="usuario.foto"  width="100" height="80">
+              </td> -->
+              <td>{{ usuario.cpf }}</td>
+              <td>{{ usuario.nome }}</td>
+              <td>
+                <a [routerLink]="['details', usuario._id]" class="btn btn-success">Detalhes</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
