@@ -17,7 +17,7 @@ export class PessoaCreateComponent implements OnInit {
   cpfValido = true;
   url: string;
 
-  pessoa : any;
+  pessoa = {};
 
   constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
 

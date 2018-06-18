@@ -1,3 +1,40 @@
-<p>
-  carro works!
-</p>
+
+<div class="container-fluid">
+  <div>
+    <div class="md-6">
+      <h2>Lista de Carros</h2>
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="text" class="form-control" placeholder="Palavra ou numeração chave" [(ngModel)]="item" name="item">
+        </div>
+        <button type="button" class="btn btn-light mb-2" [routerLink]="['create']"> <i class="fas fa-user-plus"></i> Cadastrar</button>
+      </form>
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <!-- <th>Fotografia</th> -->
+              <th>Placa</th>
+              <th>Modelo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let carro of carros | filtro: item; index as i">
+            <tr *ngIf="i<10">
+              <!-- <td>
+                <img border="0" [src]="carro.foto"  width="100" height="80">
+              </td> -->
+              <td>{{ carro.placa }}</td>
+              <td>{{ carro.modelo }}</td>
+              <td>
+                <a [routerLink]="['details', carro._id]" class="btn btn-success">Detalhes</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

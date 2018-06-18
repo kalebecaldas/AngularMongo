@@ -11,7 +11,7 @@ import { ConfigService } from '../../../config.service';
 })
 export class UsuarioDetailComponent implements OnInit {
   url: string;
-  usuario :any;
+  usuario = {};
 
   constructor(private route: ActivatedRoute, private config: ConfigService, private http: HttpClient, private router: Router) { }
 

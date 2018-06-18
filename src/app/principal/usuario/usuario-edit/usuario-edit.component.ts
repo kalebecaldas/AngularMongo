@@ -11,7 +11,7 @@ import { ConfigService } from '../../../config.service';
 })
 export class UsuarioEditComponent implements OnInit {
   url: string;
-  usuario :any;
+  usuario = {};
 
   constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
 
