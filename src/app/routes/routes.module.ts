@@ -14,11 +14,12 @@ import { UsuarioEditComponent } from '../principal/usuario/usuario-edit/usuario-
 import { PrincipalComponent } from '../principal/principal.component';
 import { LoginComponent } from '../login/login.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from '../auth-guard.service';
 
 const appRoutes: Routes = [
   {
     path: 'principal',
-    //canActivate: [AuthService],
+    canActivate: [AuthGuardService],
     component: PrincipalComponent,
     data: { title: 'Página inicial' },
     children: [
@@ -62,10 +63,6 @@ const appRoutes: Routes = [
         component: UsuarioEditComponent,
         data: { title: 'Editar Usuario' }
       },
-
-
-
-       
       { path: '',
         redirectTo: 'pessoas',
         pathMatch: 'full'

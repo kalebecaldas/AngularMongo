@@ -1,33 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ConfigService } from './config.service';
+import { Observable } from '../../node_modules/rxjs/Observable';
+import { tap } from '../../node_modules/rxjs/operators/tap';
+import { of } from '../../node_modules/rxjs/observable/of';
 
 @Injectable()
-export class AuthService implements CanActivate {
+export class AuthService {
   usuarioLogado = undefined;
+  redirectUrl: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private ConfigService: ConfigService) { }
 
-  login(usuario, senha) {
-    this.http.post('127.0.0.1:6666/login', {usuario: usuario, senha:senha}).subscribe(data => {
-      this.usuarioLogado = data;
-    }, err => {
-      this.usuarioLogado = undefined;
-    });
+  login(usuario, senha): Observable<any> {
+    return of(true).pipe(tap(() => {
+      let url = this.ConfigService.getConfig();
+      this.http.post(`${url}/login`, {usuario: usuario, senha:senha}).subscribe(data => {
+        this.usuarioLogado = data;
+
+        if (this.redirectUrl !== '/login') {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([this.redirectUrl]);
+        }
+      }, err => {
+        this.usuarioLogado = undefined;
+      });
+    }));
   }
 
   logout() {
     this.usuarioLogado = undefined;
-  }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let url: string = state.url;
-
-    if (this.usuarioLogado) {
-      return true;
-    }
-
-    this.router.navigate(['/login-valid']);
-    return false;
+    this.router.navigate(['/login']);
   }
 }

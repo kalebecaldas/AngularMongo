@@ -43,6 +43,7 @@ import { CarroComponent } from './principal/carro/carro.component';
 import { CarroCreateComponent } from './principal/carro/carro-create/carro-create.component';
 import { CarroDetailComponent } from './principal/carro/carro-detail/carro-detail.component';
 import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 
@@ -67,7 +68,7 @@ import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.comp
     CarroDetailComponent,
     CarroEditComponent,
     CarroComponent
-  ],
+],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -86,6 +87,7 @@ import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.comp
 
   providers: [
     AuthService,
+    AuthGuardService,
     ConfigService
   ],
   bootstrap: [AppComponent]

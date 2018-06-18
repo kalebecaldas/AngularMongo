@@ -5,7 +5,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var pessoa = require('./routes/pessoa');
-var usuario = require('./routes/usuario')
+var usuario = require('./routes/usuario');
+var login = require('./routes/login');
 var app = express();
 
 app.use(logger('dev'));
@@ -20,7 +21,8 @@ app.use(function(req, res, next) {
 
 /* API */
 app.use('/pessoa', pessoa);
-app.use('/usuario',usuario);
+app.use('/usuario', usuario);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,7 +47,7 @@ module.exports = app;
 /*-- Conexão com Mongo Atlas*/
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
-//mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
+//mongoose.connect('mongodb+srv://kalebecaldas:123@cluster0-kviqd.mongodb.net/test?retryWrites=true', { promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://localhost/AngDB', { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('Connection succesful'))
   .catch((err) => console.error(err));

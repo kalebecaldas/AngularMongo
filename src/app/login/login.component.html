@@ -1,36 +1,31 @@
-<!--<div class="container">
-<br> <br>
-    <form >
-        <div class="col-md-4 mb-3">
-            <label for="validationServerUsername">Usuário</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend3">@</span>
-              </div>
-              <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required (focusout)="debug()" #inputUsuario>
-              <div class="invalid-feedback" *ngIf="inputLogin.invalid">
-                Usuário Inválido.
-              </div>
-            </div>
+<div class="container-fluid bg">
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <form class="form-container"><!-- form start -->
+        <h2 class="login-header">Authenticate</h2>
+        <label for="inputUsername">Username</label>
+        <div class="form-group input-group has-success">
+          <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
           </div>
-
-          <div class="col-md-4 mb-3">
-              <label for="validationServerUsername">Senha</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroupPrepend3">#</span>
-                </div>
-                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Password" aria-describedby="inputGroupPrepend3" required #inputSenha>
-                <div class="invalid-feedback">
-                  Senha Inválida.
-                </div>
-              </div>
-              <br><br>
-              <button type="submit" class="btn btn-primary" [routerLink]="['/books']">Submit</button>
-              
-            </div>
-       
-      </form>
-      
+          <input type="text" class="form-control" id="inputUsername" placeholder="Username" required autofocus [(ngModel)]="usuario" name="usuario">
+        </div>
+        <label for="inputPassword">Password</label>
+        <div class="form-group input-group has-success">
+          <div class="input-group-prepend">
+            <span class="input-group-text">#</span>
+          </div>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" required [(ngModel)]="senha" name="senha">
+        </div>
+        <div>
+          <label>
+            <a href="#">Request access</a>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-success btn-block" (click)="fazerLogin()">Enter</button>
+      </form><!-- form end -->
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
   </div>
-  -->
+</div>

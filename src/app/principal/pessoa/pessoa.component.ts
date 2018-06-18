@@ -17,7 +17,7 @@ fontawesome.library.add(faAccessibleIcon);
 })
 
 export class PessoaComponent implements OnInit {
-  pessoas= {};
+  pessoas: any;
   item: string;
   url: string;
 
