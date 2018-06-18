@@ -25,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { FiltroPipe } from './principal/pessoa/filtro.pipe';
+import { FiltroPipeUsuario } from './principal/usuario/filtro.pipe';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginComponent } from './login/login.component';
@@ -38,9 +39,13 @@ import { UsuarioComponent } from './principal/usuario/usuario.component';
 import { UsuarioCreateComponent } from './principal/usuario/usuario-create/usuario-create.component';
 import { UsuarioDetailComponent } from './principal/usuario/usuario-detail/usuario-detail.component';
 import { UsuarioEditComponent } from './principal/usuario/usuario-edit/usuario-edit.component';
+import { CarroComponent } from './principal/carro/carro.component';
 import { CarroCreateComponent } from './principal/carro/carro-create/carro-create.component';
 import { CarroDetailComponent } from './principal/carro/carro-detail/carro-detail.component';
 import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -51,6 +56,7 @@ import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.comp
     PessoaEditComponent,
     PrincipalComponent,
     FiltroPipe,
+    FiltroPipeUsuario,
     LoginComponent,
     BarraComponent,
     UsuarioComponent,
@@ -59,7 +65,8 @@ import { CarroEditComponent } from './principal/carro/carro-edit/carro-edit.comp
     UsuarioEditComponent,
     CarroCreateComponent,
     CarroDetailComponent,
-    CarroEditComponent
+    CarroEditComponent,
+    CarroComponent
   ],
   imports: [
     BrowserModule,

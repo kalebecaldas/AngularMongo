@@ -11,7 +11,7 @@ import { ConfigService } from '../../../config.service';
 })
 export class PessoaDetailComponent implements OnInit {
   url: string;
-  pessoa = {};
+  pessoa : any;
 
   constructor(private route: ActivatedRoute, private config: ConfigService, private http: HttpClient, private router: Router) { }
 
@@ -21,6 +21,7 @@ export class PessoaDetailComponent implements OnInit {
   }
 
   getPessoaDetail(id) {
+   
     this.http.get(`${this.url}/pessoa/${id}`).subscribe(data => {
       this.pessoa = data;
     });

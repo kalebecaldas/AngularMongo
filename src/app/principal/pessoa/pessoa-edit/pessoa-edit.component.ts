@@ -11,7 +11,7 @@ import { ConfigService } from '../../../config.service';
 })
 export class PessoaEditComponent implements OnInit {
   url: string;
-  pessoa = {};
+  pessoa : any;
 
   constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
 

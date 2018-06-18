@@ -6,6 +6,6 @@ export class ConfigService {
   constructor() { }
 
   getConfig() {
-    return 'http://localhost:3000';
+    return 'http://191.189.21.190:8080';
   }
 }

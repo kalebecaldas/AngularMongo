@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filtro'
 })
-export class FiltroPipe implements PipeTransform {
+export class FiltroPipeUsuario implements PipeTransform {
 
   transform(usuarios: any[], searchText: string): any[] {
     if(!usuarios) return [];
