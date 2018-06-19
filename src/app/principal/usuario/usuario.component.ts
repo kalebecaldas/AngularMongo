@@ -17,7 +17,7 @@ fontawesome.library.add(faAccessibleIcon);
 })
 
 export class UsuarioComponent implements OnInit {
-  usuarios: any;
+  usuarios:any;
   item: string;
   url: string;
 

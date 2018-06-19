@@ -17,4 +17,6 @@ export class BarraComponent implements OnInit {
     this.authService.logout();
   }
 
+
+  
 }

@@ -17,7 +17,7 @@ export class UsuarioCreateComponent implements OnInit {
   cpfValido = true;
   url: string;
 
-  usuario= {};
+  usuario = {};
 
   constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
 

@@ -3,32 +3,31 @@
   <div class="row">
     <div class="col-md-6">
       <form (ngSubmit)="saveCarro()" #carroForm="ngForm">
+          <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
         <div class="form-group">
-          <label for="name">Nome</label>
-          <input type="text" class="form-control" [(ngModel)]="carro.nome" name="nome" required>
+          <label for="name">Modelo</label>
+          <input type="text" class="form-control" [(ngModel)]="carro.modelo" name="nome" required>
         </div>
         <div class="form-group">
-          <label for="name">CPF</label>
-          <input class="form-control" mask="000.000.000-00" [(ngModel)]="carro.cpf" name="cpf" required (focusout)="validarCpf()">
+          <label for="name">Placa</label>
+          <input class="form-control" [(ngModel)]="carro.placa" name="cpf" required (focusout)="validarCpf()">
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="cpfDuplicado">
-          CPF já cadastrado!
-        </div>
-        <div class="alert alert-warning" role="alert" *ngIf="!cpfValido">
-          CPF inválido!
+          Placa já cadastrada!
         </div>
         <div class="form-group">
-          <label for="name">RG</label>
-          <input class="form-control" mask="0.000.000-0" [(ngModel)]="carro.rg" name="rg" required>
+          <label for="name">Marca</label>
+          <input class="form-control" [(ngModel)]="carro.marca" name="rg" required>
         </div>
-        <div class="form-group">
-          <label for="name">Endereço</label>
-          <input type="text" class="form-control" [(ngModel)]="carro.endereco" name="endereco" required>
-        </div>
-        <div class="form-group">
-          <label for="name">Nome da Mãe</label>
-          <input type="text" class="form-control" [(ngModel)]="carro.mae" name="mae" required>
-        </div>
+        
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="seletordeArquivos"  [(ngModel)]="carro.foto" name="seletordeArquivos">
           <label class="custom-file-label" for="seletordeArquivos">Selecionar Arquivo</label>

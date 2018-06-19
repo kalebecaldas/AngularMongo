@@ -18,7 +18,7 @@
               <!-- <th>Fotografia</th> -->
               <th>Placa</th>
               <th>Modelo</th>
-              <th>Ações</th>
+              <th>Info</th>
             </tr>
           </thead>
           <tbody *ngFor="let carro of carros | filtro: item; index as i">
@@ -28,6 +28,7 @@
               </td> -->
               <td>{{ carro.placa }}</td>
               <td>{{ carro.modelo }}</td>
+              <td>{{ carro.info }}</td>
               <td>
                 <a [routerLink]="['details', carro._id]" class="btn btn-success">Detalhes</a>
               </td>

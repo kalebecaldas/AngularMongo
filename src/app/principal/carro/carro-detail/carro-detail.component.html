@@ -1,3 +1,18 @@
-<p>
-  carro-detail works!
-</p>
+<div class="container">
+    <form>
+        <div class="form-control">
+          <p class="lead">{{ carro.marca }}</p>
+          <hr class="my-4">
+          <p><b>Marca:</b> {{ carro.marca }}</p>
+          <p><b>Modelo:</b> {{ carro.modelo }}</p>
+          <p><b>Placa:</b> {{ carro.placa }}</p>
+          <p><b>Proprietário:</b> {{ carro.proprietario }}</p>
+          <p><b>Info:</b> {{ carro.info }}</p>
+          <form class="inline-form">
+            <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+            <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
+            <button class="btn btn-danger" type="button" (click)="deleteCarro(carro._id)">Excluir</button>
+          </form>
+        </div>
+      </form>
+  </div>

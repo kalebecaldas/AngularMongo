@@ -10,6 +10,11 @@ import { UsuarioDetailComponent } from '../principal/usuario/usuario-detail/usua
 import { UsuarioCreateComponent } from '../principal/usuario/usuario-create/usuario-create.component';
 import { UsuarioEditComponent } from '../principal/usuario/usuario-edit/usuario-edit.component';
 
+import { CarroComponent } from '../principal/carro/carro.component';
+import { CarroDetailComponent } from '../principal/carro/carro-detail/carro-detail.component';
+import { CarroCreateComponent } from '../principal/carro/carro-create/carro-create.component';
+import { CarroEditComponent } from '../principal/carro/carro-edit/carro-edit.component';
+
 
 import { PrincipalComponent } from '../principal/principal.component';
 import { LoginComponent } from '../login/login.component';
@@ -62,6 +67,26 @@ const appRoutes: Routes = [
         path: 'usuarios/details/:id/edit',
         component: UsuarioEditComponent,
         data: { title: 'Editar Usuario' }
+      },
+      {
+        path: 'carros',
+        component: CarroComponent,
+        data: { title: 'Lista de Carros' }
+      },
+      {
+        path: 'carros/create',
+        component: CarroCreateComponent,
+        data: { title: 'Cadastrar Carro' }
+      },
+      {
+        path: 'carros/details/:id',
+        component: CarroDetailComponent,
+        data: { title: 'Visualizar Carro' }
+      },
+      {
+        path: 'carros/details/:id/edit',
+        component: CarroEditComponent,
+        data: { title: 'Editar Carro' }
       },
       { path: '',
         redirectTo: 'pessoas',

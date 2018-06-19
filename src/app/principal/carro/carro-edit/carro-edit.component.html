@@ -1,3 +1,35 @@
-<p>
-  carro-edit works!
-</p>
+<div class="container">
+    <h1>Editar cadastro</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <form (ngSubmit)="updateCarro(carro._id)" #carroForm="ngForm">
+          <div class="form-group">
+            <label for="name">Marca</label>
+            <input type="text" class="form-control" [(ngModel)]="carro.marca" name="marca" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Modelo</label>
+            <input type="text" class="form-control" [(ngModel)]="carro.modelo" name="modelo" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Placa</label>
+            <input type="text" class="form-control" [(ngModel)]="carro.placa" name="placa" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Proprietário</label>
+            <input type="text" class="form-control" [(ngModel)]="carro.proprietario" name="proprietario" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Info</label>
+            <input type="text" class="form-control" [(ngModel)]="carro.info" name="mae" required>
+          </div>
+          <hr>
+          <div class="form-group">
+            <button class="btn btn-primary" [routerLink]="['']" type="button">Voltar</button>
+            <button class="btn btn-success" type="button" (click)="updateCarro(carro._id)" [disabled]="!carroForm.form.valid">Salvar</button>
+            <button class="btn btn-danger" type="button" (click)="deleteCarro(carro._id)">Excluir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
