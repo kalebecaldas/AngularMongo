@@ -12,7 +12,6 @@ import { ConfigService } from '../../../config.service';
   encapsulation: ViewEncapsulation.None
 })
 export class CarroCreateComponent implements OnInit {
-  //@ViewChild('inputPlaca') placa;
   placaDuplicado = false;
   placaValido = true;
   url: string;
@@ -23,6 +22,7 @@ export class CarroCreateComponent implements OnInit {
 
   ngOnInit() {
     this.url = this.config.getConfig();
+    this.carro['outros'] = [];
   }
 
   saveCarro() {
@@ -33,6 +33,14 @@ export class CarroCreateComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+
+  adicionarCampo() {
+    this.carro['outros'].push({nome: '', valor: ''});
+  }
+
+  removerCampo(index) {
+    this.carro['outros'].splice(index, index+1);
   }
 
   validarPlaca() {

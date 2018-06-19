@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var formidable = require('formidable');
 var Pessoa = require('../models/Pessoa.js');
 
 /* GET ALL PessoaS */
@@ -8,7 +9,6 @@ router.get('/', function(req, res, next) {
     if (err)
       return next(err);
     
-    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(products);
   });
 });
@@ -18,7 +18,6 @@ router.get('/:id', function(req, res, next) {
   Pessoa.findById(req.params.id, function (err, post) {
     if (err) return next(err);
 
-    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -27,7 +26,6 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   Pessoa.create(req.body, function (err, post) {
     if (err) return next(err);
-    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -36,7 +34,6 @@ router.post('/', function(req, res, next) {
 router.post('/:id', function(req, res, next) {
   Pessoa.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
-    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -45,7 +42,6 @@ router.post('/:id', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   Pessoa.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
-    //res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   });
 });
@@ -58,8 +54,6 @@ router.get('/cpf/:cpf', (req, res, next) => {
     if (err) {
       console.error(err);
     }
-
-    //res.setHeader('Access-Control-Allow-Origin', '*');
 
     if (result) {
       res.send(true);

@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-Outro = {
-nome: String,
-valor: String,
+Campo = {
+  nome: String,
+  valor: String,
 };
 var CarroSchema = new mongoose.Schema({
     marca: String,
@@ -10,9 +10,8 @@ var CarroSchema = new mongoose.Schema({
     placa: String,
     proprietario: String,
     info: String,
-    outro: Outro,
-    
+    outros: Array(Campo),
   });
 
   module.exports = mongoose.model('Carro', CarroSchema);
-
+  
