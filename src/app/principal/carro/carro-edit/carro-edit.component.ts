@@ -26,11 +26,19 @@ export class CarroEditComponent implements OnInit {
     });
   }
 
+  adicionarCampo() {
+    this.carro['outros'].push({nome: '', valor: ''});
+  }
+
+  removerCampo(index) {
+    this.carro['outros'].splice(index, index+1);
+  }
+
   updateCarro(id) {
     this.http.post(`${this.url}/carro/${id}`, this.carro)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/carros']);
         }, (err) => {
           console.log(err);
         }
@@ -40,7 +48,7 @@ export class CarroEditComponent implements OnInit {
   deleteCarro(id) {
     this.http.delete(`${this.url}/carro/${id}`)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/carros']);
         }, (err) => {
           console.log(err);
         }

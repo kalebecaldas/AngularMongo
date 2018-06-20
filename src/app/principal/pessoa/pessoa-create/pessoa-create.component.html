@@ -2,7 +2,7 @@
   <h1>Adicionar pessoa</h1>
   <div class="row">
     <div class="col-md-6">
-      <form (ngSubmit)="savePessoa()" #pessoaForm="ngForm">
+      <form>
         <div class="form-group">
           <label for="name">Nome</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" required>
@@ -29,6 +29,21 @@
           <label for="name">Nome da Mãe</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
         </div>
+        <!-- Vetor de outros campos -->
+        <div class="form-group">
+          <label for="name">Outros</label>
+          <button class="btn btn-primary" (click)="adicionarCampo()">Adicionar</button>
+        </div>
+        <div class="form-group">
+          <form class="form-inline" *ngFor="let campo of pessoa.outros; index as i">
+            <label class="sr-only" for="campoNome">Nome</label>
+            <input type="text" id="campoNome" class="form-control mb-2 mr-sm-2" placeholder="Nome" [(ngModel)]="campo.nome" [name]="'nome' + i">
+            <label class="sr-only" for="campoValor">Valor</label>
+            <input type="text" id="campoValor" class="form-control mb-2 mr-sm-2" placeholder="Valor" [(ngModel)]="campo.valor" [name]="'valor' + i">
+            <button (click)="removerCampo(i)" class="btn btn-danger mb-2">X</button>
+          </form>
+        </div>
+        <!-- Final do vetor -->
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="seletordeArquivos"  [(ngModel)]="pessoa.foto" name="seletordeArquivos">
           <label class="custom-file-label" for="seletordeArquivos">Selecionar Arquivo</label>
@@ -36,7 +51,7 @@
         <hr>
         <div class="form-group">
           <button class="btn btn-primary" type="button" [routerLink]="['']">Voltar</button>
-          <button class="btn btn-success" type="submit">Salvar</button>
+          <button class="btn btn-success" type="button" (click)="savePessoa()">Salvar</button>
         </div>
       </form>
     </div>

@@ -30,7 +30,7 @@ export class UsuarioDetailComponent implements OnInit {
   deleteUsuario(id) {
     this.http.delete(`${this.url}/usuario/${id}`)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/usuarios']);
         }, (err) => {
           console.log(err);
         }

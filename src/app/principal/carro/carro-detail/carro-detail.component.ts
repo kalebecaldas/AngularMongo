@@ -31,7 +31,7 @@ export class CarroDetailComponent implements OnInit {
   deleteCarro(id) {
     this.http.delete(`${this.url}/carro/${id}`)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/carros']);
         }, (err) => {
           console.log(err);
         }

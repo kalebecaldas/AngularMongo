@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import fontawesome from '@fortawesome/fontawesome';
 import faUser from '@fortawesome/fontawesome-free-solid';
 import faAccessibleIcon from '@fortawesome/fontawesome-free-brands'; 

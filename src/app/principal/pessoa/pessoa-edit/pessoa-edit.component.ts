@@ -26,6 +26,14 @@ export class PessoaEditComponent implements OnInit {
     });
   }
 
+  adicionarCampo() {
+    this.pessoa['outros'].push({nome: '', valor: ''});
+  }
+
+  removerCampo(index) {
+    this.pessoa['outros'].splice(index, index+1);
+  }
+
   updatePessoa(id) {
     this.http.post(`${this.url}/pessoa/${id}`, this.pessoa)
       .subscribe(res => {

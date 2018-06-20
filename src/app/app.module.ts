@@ -24,8 +24,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms'
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { FiltroPipe } from './principal/pessoa/filtro.pipe';
-import { FiltroPipeUsuario } from './principal/usuario/filtro.pipe';
+import { FiltroPipe } from './filtro.pipe';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginComponent } from './login/login.component';
@@ -47,7 +46,6 @@ import { AuthGuardService } from './auth-guard.service';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +55,6 @@ import { AuthGuardService } from './auth-guard.service';
     PessoaEditComponent,
     PrincipalComponent,
     FiltroPipe,
-    FiltroPipeUsuario,
     LoginComponent,
     BarraComponent,
     UsuarioComponent,

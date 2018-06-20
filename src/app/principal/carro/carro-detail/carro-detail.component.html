@@ -8,10 +8,10 @@
           <p><b>Placa:</b> {{ carro.placa }}</p>
           <p><b>Proprietário:</b> {{ carro.proprietario }}</p>
           <p><b>Info:</b> {{ carro.info }}</p>
-          <p><b>Outras informações:</b></p>
+          <p *ngIf="carro.outros != false"><b>Outras informações:</b></p>
           <p *ngFor="let campo of carro.outros">{{campo.nome}}: {{campo.valor}}</p>
           <form class="inline-form">
-            <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
+            <button class="btn"  [routerLink]="['/principal/carros']" type="button">Voltar</button>
             <button [routerLink]="['edit']" class="btn btn-success">Editar</button>
             <button class="btn btn-danger" type="button" (click)="deleteCarro(carro._id)">Excluir</button>
           </form>

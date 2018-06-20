@@ -7,6 +7,8 @@
         <p><b>RG:</b> {{ pessoa.rg }}</p>
         <p><b>Endereço:</b> {{ pessoa.endereco }}</p>
         <p><b>Nome da mãe:</b> {{ pessoa.mae }}</p>
+        <p *ngIf="pessoa.outros != false"><b>Outras informações:</b></p>
+        <p *ngFor="let campo of pessoa.outros">{{campo.nome}}: {{campo.valor}}</p>
         <form class="inline-form">
           <button class="btn"  [routerLink]="['']" type="button">Voltar</button>
           <button [routerLink]="['edit']" class="btn btn-success">Editar</button>

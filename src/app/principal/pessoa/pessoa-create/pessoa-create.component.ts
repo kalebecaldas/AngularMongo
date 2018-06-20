@@ -60,6 +60,14 @@ export class PessoaCreateComponent implements OnInit {
       (err) => console.error(err))
   }
 
+  adicionarCampo() {
+    this.pessoa['outros'].push({nome: '', valor: ''});
+  }
+
+  removerCampo(index) {
+    this.pessoa['outros'].splice(index, index+1);
+  }
+
   validarDigitoCpf(cpf) {
     let primeiro = 0;
     let segundo = 0;

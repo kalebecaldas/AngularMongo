@@ -28,7 +28,7 @@ export class CarroCreateComponent implements OnInit {
   saveCarro() {
     this.http.post(`${this.url}/carro`, this.carro)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/carros']);
         }, (err) => {
           console.log(err);
         }

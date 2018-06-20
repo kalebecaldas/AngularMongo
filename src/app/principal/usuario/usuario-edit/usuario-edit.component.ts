@@ -30,7 +30,7 @@ export class UsuarioEditComponent implements OnInit {
     this.http.post(`${this.url}/usuario/${id}`, this.usuario)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/usuarios']);
         }, (err) => {
           console.log(err);
         }
@@ -40,7 +40,7 @@ export class UsuarioEditComponent implements OnInit {
   deleteUsuario(id) {
     this.http.delete(`${this.url}/usuario/${id}`)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/principal/usuarios']);
         }, (err) => {
           console.log(err);
         }
