@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../config.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-pessoa-edit',
@@ -13,7 +14,7 @@ export class PessoaEditComponent implements OnInit {
   url: string;
   pessoa = {};
 
-  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.url = this.config.getConfig();
@@ -37,19 +38,22 @@ export class PessoaEditComponent implements OnInit {
   updatePessoa(id) {
     this.http.post(`${this.url}/pessoa/${id}`, this.pessoa)
       .subscribe(res => {
-          let id = res['_id'];
-          this.router.navigate(['']);
-        }, (err) => {
-          console.log(err);
-        }
+        this.snackBar.open('Alterações salvas com sucesso!', 'Fechar');
+        this.router.navigate(['/principal/pessoas']);
+      }, (err) => {
+        this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
+        console.log(err);
+      }
       );
   }
 
   deletePessoa(id) {
     this.http.delete(`${this.url}/pessoa/${id}`)
       .subscribe(res => {
-          this.router.navigate(['']);
+          this.snackBar.open('Registro excluído com sucesso!', 'Fechar');
+          this.router.navigate(['/principal/pessoas']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );

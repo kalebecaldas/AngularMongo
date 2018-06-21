@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../config.service';
-//import { Observable } from 'rxjs';
-//import { when } from 'q';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-pessoa-create',
@@ -12,14 +11,11 @@ import { ConfigService } from '../../../config.service';
   encapsulation: ViewEncapsulation.None
 })
 export class PessoaCreateComponent implements OnInit {
-  //@ViewChild('inputCpf') cpf;
-  cpfDuplicado = false;
-  cpfValido = true;
   url: string;
 
   pessoa = {};
 
-  constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.url = this.config.getConfig();
@@ -28,15 +24,17 @@ export class PessoaCreateComponent implements OnInit {
   savePessoa() {
     this.http.post(`${this.url}/pessoa`, this.pessoa)
       .subscribe(res => {
+          this.snackBar.open('Cadastro salvo com sucesso!', 'Fechar');
           this.router.navigate(['']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );
   }
 
   validarCpf() {
-    this.cpfValido = false;
+    let cpfValido = false;
 
     if (this.pessoa['cpf']) {
       if(this.pessoa['cpf'].length === 11) {      
@@ -45,19 +43,21 @@ export class PessoaCreateComponent implements OnInit {
           numeroCpf.push(+element);
         });
 
-        this.cpfValido = this.validarDigitoCpf(numeroCpf);
+        cpfValido = this.validarDigitoCpf(numeroCpf);
       }
     }
 
     this.http.get(`${this.url}/pessoa/cpf/${this.pessoa['cpf']}`).subscribe(
       (data) => {
         if (data) {
-          this.cpfDuplicado = true;
-        } else {
-          this.cpfDuplicado = false;
+          this.snackBar.open('CPF já cadastrado!', 'Fechar');
         }
       },
-      (err) => console.error(err))
+      (err) => console.error(err));
+
+    if (!cpfValido) {
+      this.snackBar.open('CPF inválido!', 'Fechar');
+    }
   }
 
   adicionarCampo() {

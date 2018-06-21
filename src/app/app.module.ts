@@ -29,6 +29,9 @@ import { FiltroPipe } from './filtro.pipe';
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginComponent } from './login/login.component';
 
+import {MatSnackBarModule} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
+
 /* Services */
 import { AuthService } from './auth.service';
 import { BarraComponent } from './principal/barra/barra.component';
@@ -78,14 +81,16 @@ import { AuthGuardService } from './auth-guard.service';
     TypeaheadModule.forRoot(),
     NgbModule.forRoot(),
     NgxMaskModule.forRoot(),
-    RoutesModule
+    RoutesModule,
+    MatSnackBarModule
   ],
   exports: [BsDropdownModule, TooltipModule, ModalModule, TypeaheadModule, PessoaComponent,UsuarioComponent,AutoCompleteModule],
 
   providers: [
     AuthService,
     AuthGuardService,
-    ConfigService
+    ConfigService,
+    MatSnackBar
   ],
   bootstrap: [AppComponent]
 })
