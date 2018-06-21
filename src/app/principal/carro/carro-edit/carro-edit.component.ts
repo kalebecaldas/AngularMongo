@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../config.service';
+import { MatSnackBar } from '../../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-carro-edit',
@@ -13,7 +14,7 @@ export class CarroEditComponent implements OnInit {
   url: string;
   carro = {};
 
-  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.url = this.config.getConfig();
@@ -37,9 +38,10 @@ export class CarroEditComponent implements OnInit {
   updateCarro(id) {
     this.http.post(`${this.url}/carro/${id}`, this.carro)
       .subscribe(res => {
-          let id = res['_id'];
+          this.snackBar.open('Alterações salvas com sucesso.', 'Fechar');
           this.router.navigate(['/principal/carros']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );
@@ -48,8 +50,10 @@ export class CarroEditComponent implements OnInit {
   deleteCarro(id) {
     this.http.delete(`${this.url}/carro/${id}`)
       .subscribe(res => {
+          this.snackBar.open('Carro excluído com sucesso.', 'Fechar');
           this.router.navigate(['/principal/carros']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );

@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../config.service';
-//import { Observable } from 'rxjs';
-//import { when } from 'q';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-usuario-create',
@@ -12,14 +11,11 @@ import { ConfigService } from '../../../config.service';
   encapsulation: ViewEncapsulation.None
 })
 export class UsuarioCreateComponent implements OnInit {
-  //@ViewChild('inputCpf') cpf;
-  cpfDuplicado = false;
-  cpfValido = true;
   url: string;
 
   usuario = {};
 
-  constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.url = this.config.getConfig();
@@ -28,15 +24,17 @@ export class UsuarioCreateComponent implements OnInit {
   saveUsuario() {
     this.http.post(`${this.url}/usuario`, this.usuario)
       .subscribe(res => {
-         this.router.navigate(['/principal/usuarios']);
+          this.snackBar.open('Usuário cadastrado com sucesso!', 'Fechar');
+          this.router.navigate(['/principal/usuarios']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );
   }
 
   validarCpf() {
-    this.cpfValido = false;
+    let cpfValido = false;
 
     if (this.usuario['cpf']) {
       if(this.usuario['cpf'].length === 11) {      
@@ -45,19 +43,22 @@ export class UsuarioCreateComponent implements OnInit {
           numeroCpf.push(+element);
         });
 
-        this.cpfValido = this.validarDigitoCpf(numeroCpf);
+        cpfValido = this.validarDigitoCpf(numeroCpf);
       }
     }
 
     this.http.get(`${this.url}/usuario/cpf/${this.usuario['cpf']}`).subscribe(
       (data) => {
         if (data) {
-          this.cpfDuplicado = true;
+          this.snackBar.open('CPF já cadastrado.', 'Fechar');
         } else {
-          this.cpfDuplicado = false;
         }
       },
       (err) => console.error(err))
+    
+    if (!cpfValido) {
+      this.snackBar.open('CPF inválido.', 'Fechar');
+    }
   }
 
   validarDigitoCpf(cpf) {

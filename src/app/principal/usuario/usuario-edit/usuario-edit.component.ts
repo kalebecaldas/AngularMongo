@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../config.service';
+import { MatSnackBar } from '../../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -13,7 +14,7 @@ export class UsuarioEditComponent implements OnInit {
   url: string;
   usuario= {};
 
-  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private config: ConfigService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.url = this.config.getConfig();
@@ -29,9 +30,10 @@ export class UsuarioEditComponent implements OnInit {
   updateUsuario(id) {
     this.http.post(`${this.url}/usuario/${id}`, this.usuario)
       .subscribe(res => {
-          let id = res['_id'];
+          this.snackBar.open('Alterações salvas com sucesso.', 'Fechar');
           this.router.navigate(['/principal/usuarios']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );
@@ -40,8 +42,10 @@ export class UsuarioEditComponent implements OnInit {
   deleteUsuario(id) {
     this.http.delete(`${this.url}/usuario/${id}`)
       .subscribe(res => {
+        this.snackBar.open('Usuário excluído com sucesso.', 'Fechar');
           this.router.navigate(['/principal/usuarios']);
         }, (err) => {
+          this.snackBar.open('Ocorreu um erro, tente novamente.', 'Fechar');
           console.log(err);
         }
       );
