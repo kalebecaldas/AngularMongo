@@ -6,8 +6,10 @@
           <p><b>Marca:</b> {{ carro.marca }}</p>
           <p><b>Modelo:</b> {{ carro.modelo }}</p>
           <p><b>Placa:</b> {{ carro.placa }}</p>
+          <p><b>Cor:</b> {{ carro.cor }}</p>
           <p><b>Proprietário:</b> {{ carro.proprietario }}</p>
-          <p><b>Info:</b> {{ carro.info }}</p>
+          <p><b>Contato:</b> {{ carro.numContato }}</p>
+          <p><b>Status:</b> {{ carro.status}}</p>
           <p *ngIf="carro.outros != false"><b>Outras informações:</b></p>
           <p *ngFor="let campo of carro.outros">{{campo.nome}}: {{campo.valor}}</p>
           <form class="inline-form">

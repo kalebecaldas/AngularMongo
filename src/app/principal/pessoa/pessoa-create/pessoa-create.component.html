@@ -20,7 +20,7 @@
           <input type="text" class="form-control" [(ngModel)]="pessoa.endereco" name="endereco" required>
         </div>
         <div class="form-group">
-          <label for="name">Nome da Mãe</label>
+          <label for="name">Responsável</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
         </div>
         <div class="form-group">
@@ -48,7 +48,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <button class="btn btn-primary" type="button" [routerLink]="['']">Voltar</button>
+          <button class="btn btn-primary" type="button" [routerLink]="['/principal/pessoas']">Voltar</button>
           <button class="btn btn-success" type="button" (click)="savePessoa()">Salvar</button>
         </div>
       </form>

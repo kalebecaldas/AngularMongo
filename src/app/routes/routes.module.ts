@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+
+import { PaginaInicialComponent } from '../principal/pagina-inicial/pagina-inicial.component';
+
 import { PessoaComponent } from '../principal/pessoa/pessoa.component';
 import { PessoaDetailComponent } from '../principal/pessoa/pessoa-detail/pessoa-detail.component';
 import { PessoaCreateComponent } from '../principal/pessoa/pessoa-create/pessoa-create.component';
@@ -74,6 +77,11 @@ const appRoutes: Routes = [
         data: { title: 'Lista de Carros' }
       },
       {
+        path: 'paginaInicial',
+        component: PaginaInicialComponent,
+        data: { title: 'Pagina Inicial' }
+      },
+      {
         path: 'carros/create',
         component: CarroCreateComponent,
         data: { title: 'Cadastrar Carro' }
@@ -89,7 +97,7 @@ const appRoutes: Routes = [
         data: { title: 'Editar Carro' }
       },
       { path: '',
-        redirectTo: 'pessoas',
+        redirectTo: 'paginaInicial',
         pathMatch: 'full'
       }
     ]

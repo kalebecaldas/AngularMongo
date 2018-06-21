@@ -20,8 +20,12 @@
           <input type="text" class="form-control" [(ngModel)]="pessoa.endereco" name="endereco" required>
         </div>
         <div class="form-group">
-          <label for="name">Nome da Mãe</label>
+          <label for="name">Responsável</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Contato</label>
+          <input type="text" class="form-control" [(ngModel)]="pessoa.numContato" name="contato" required>
         </div>
         <!-- Vetor de outros campos -->
         <div class="form-group">
@@ -40,7 +44,7 @@
         <!-- Final do vetor -->
         <hr>
         <div class="form-group">
-          <button class="btn btn-primary" [routerLink]="['']" type="button">Voltar</button>
+          <button class="btn btn-primary" [routerLink]="['/principal/pessoas']" type="button">Voltar</button>
           <button class="btn btn-success" type="button" (click)="updatePessoa(pessoa._id)" [disabled]="!pessoaForm.form.valid">Salvar</button>
           <button class="btn btn-danger" type="button" (click)="deletePessoa(pessoa._id)">Excluir</button>
         </div>
