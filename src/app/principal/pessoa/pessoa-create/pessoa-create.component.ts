@@ -19,6 +19,7 @@ export class PessoaCreateComponent implements OnInit {
 
   ngOnInit() {
     this.url = this.config.getConfig();
+    this.pessoa['outros'] = [];
   }
 
   savePessoa() {
@@ -51,6 +52,7 @@ export class PessoaCreateComponent implements OnInit {
       (data) => {
         if (data) {
           this.snackBar.open('CPF já cadastrado!', 'Fechar');
+          this.snackBar.dismiss;
         }
       },
       (err) => console.error(err));

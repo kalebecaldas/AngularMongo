@@ -8,8 +8,10 @@ var CarroSchema = new mongoose.Schema({
     marca: String,
     modelo: String,
     placa: String,
+    cor: String,
     proprietario: String,
-    info: String,
+    telContato: String,
+    status: String,
     outros: Array(Campo),
   });
 

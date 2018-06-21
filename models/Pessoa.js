@@ -10,7 +10,8 @@ var PessoaSchema = new mongoose.Schema({
     rg: String,
     endereco: String,
     mae: String,
-    outros: Array(Campo),
+    numContato: String,
+    outros: Array(Campo)
   });
 
   module.exports = mongoose.model('Pessoa', PessoaSchema);

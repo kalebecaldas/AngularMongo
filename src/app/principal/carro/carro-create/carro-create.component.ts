@@ -46,17 +46,6 @@ export class CarroCreateComponent implements OnInit {
   validarPlaca() {
     this.placaValido = false;
 
-    if (this.carro['placa']) {
-      if(this.carro['placa'].length === 11) {      
-        let numeroPlaca = [];
-        this.carro['placa'].split('').forEach(element => {
-          numeroPlaca.push(+element);
-        });
-
-  
-      }
-    }
-
     this.http.get(`${this.url}/carro/placa/${this.carro['placa']}`).subscribe(
       (data) => {
         if (data) {

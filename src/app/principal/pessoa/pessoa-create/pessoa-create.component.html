@@ -23,6 +23,10 @@
           <label for="name">Nome da Mãe</label>
           <input type="text" class="form-control" [(ngModel)]="pessoa.mae" name="mae" required>
         </div>
+        <div class="form-group">
+          <label for="name">Contato</label>
+          <input type="phone" class="form-control" [(ngModel)]="pessoa.numContato" name="contato" required>
+        </div>
         <!-- Vetor de outros campos -->
         <div class="form-group">
           <label for="name">Outros</label>
